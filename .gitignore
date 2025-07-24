@@ -1,0 +1,11 @@
+# Ignore model and pipeline files
+model.pkl
+pipeline.pkl
+
+# Ignore generated input/output files
+input.csv
+output.csv
+
+# Ignore Python cache
+__pycache__/
+*.pyc
