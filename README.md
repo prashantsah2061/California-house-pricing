@@ -1,6 +1,7 @@
 # 🏠 California Housing Price Prediction
 
 This project uses machine learning (Scikit-learn) to predict housing prices in California based on various features such as location, median income, and proximity to the ocean.
+---
 
 
 ## 📁 Project Structure
