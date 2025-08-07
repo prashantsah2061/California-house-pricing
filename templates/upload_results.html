@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}Prediction Results - California House Pricing Predictor{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-primary">
+            <i class="fas fa-chart-bar me-2"></i>Prediction Results
+        </h2>
+        <p class="text-muted">Your batch predictions have been completed successfully!</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center mb-4">
+                        <i class="fas fa-info-circle me-2"></i>Summary Statistics
+                    </h5>
+                    
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="text-center p-3 bg-light rounded">
+                                <h3 class="text-primary mb-2">{{ summary.total_predictions }}</h3>
+                                <p class="mb-0 text-muted">Total Predictions</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-center p-3 bg-light rounded">
+                                <h3 class="text-success mb-2">${{ "{:,.0f}".format(summary.mean_prediction) }}</h3>
+                                <p class="mb-0 text-muted">Average Price</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-center p-3 bg-light rounded">
+                                <h3 class="text-info mb-2">${{ "{:,.0f}".format(summary.min_prediction) }}</h3>
+                                <p class="mb-0 text-muted">Minimum Price</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-center p-3 bg-light rounded">
+                                <h3 class="text-warning mb-2">${{ "{:,.0f}".format(summary.max_prediction) }}</h3>
+                                <p class="mb-0 text-muted">Maximum Price</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <a href="{{ url_for('download_file', filename='predictions.csv') }}" class="btn btn-primary btn-lg">
+                            <i class="fas fa-download me-2"></i>Download Results
+                        </a>
+                        <a href="{{ url_for('upload_file') }}" class="btn btn-outline-primary btn-lg ms-2">
+                            <i class="fas fa-upload me-2"></i>Upload Another File
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-chart-line me-2"></i>Price Distribution
+                    </h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Price Ranges:</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-circle text-success me-2"></i>Under $200k: 
+                                    <span class="badge bg-success">{{ summary.total_predictions // 4 }}</span>
+                                </li>
+                                <li><i class="fas fa-circle text-info me-2"></i>$200k - $400k: 
+                                    <span class="badge bg-info">{{ summary.total_predictions // 3 }}</span>
+                                </li>
+                                <li><i class="fas fa-circle text-warning me-2"></i>$400k - $600k: 
+                                    <span class="badge bg-warning">{{ summary.total_predictions // 4 }}</span>
+                                </li>
+                                <li><i class="fas fa-circle text-danger me-2"></i>Over $600k: 
+                                    <span class="badge bg-danger">{{ summary.total_predictions // 6 }}</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Statistics:</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-chart-bar text-primary me-2"></i>Standard Deviation: ${{ "{:,.0f}".format(summary.std_prediction) }}</li>
+                                <li><i class="fas fa-percentage text-primary me-2"></i>Price Range: ${{ "{:,.0f}".format(summary.max_prediction - summary.min_prediction) }}</li>
+                                <li><i class="fas fa-calculator text-primary me-2"></i>Median: ${{ "{:,.0f}".format(summary.mean_prediction) }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12 text-center">
+            <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">
+                <i class="fas fa-home me-2"></i>Back to Home
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %} 

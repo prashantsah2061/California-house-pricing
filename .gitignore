@@ -5,7 +5,21 @@ pipeline.pkl
 # Ignore generated input/output files
 input.csv
 output.csv
+input copy.csv
 
 # Ignore Python cache
 __pycache__/
 *.pyc
+
+# Ignore environment files
+.env
+*.env
+
+# Ignore uploads directory contents
+uploads/*.csv
+
+# Ignore large dataset files
+housing.csv
+
+# Ignore old scripts
+main_old.py

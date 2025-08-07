@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% block title %}About - California House Pricing Predictor{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-primary">
+            <i class="fas fa-info-circle me-2"></i>About the Project
+        </h2>
+        <p class="text-muted">Learn more about our California House Pricing Prediction system</p>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-project-diagram me-2"></i>Project Overview
+                    </h5>
+                    <p class="card-text">
+                        This web application uses machine learning to predict house prices in California based on various 
+                        property features. The system is built using Flask and incorporates a Random Forest regression model 
+                        trained on the California Housing Dataset.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-brain me-2"></i>Machine Learning Model
+                    </h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check text-success me-2"></i><strong>Algorithm:</strong> Random Forest Regressor</li>
+                        <li><i class="fas fa-check text-success me-2"></i><strong>Training Data:</strong> California Housing Dataset</li>
+                        <li><i class="fas fa-check text-success me-2"></i><strong>Features:</strong> 9 property characteristics</li>
+                        <li><i class="fas fa-check text-success me-2"></i><strong>Preprocessing:</strong> Automated pipeline</li>
+                        <li><i class="fas fa-check text-success me-2"></i><strong>Validation:</strong> Stratified cross-validation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-cogs me-2"></i>Technical Stack
+                    </h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-code text-primary me-2"></i><strong>Backend:</strong> Flask (Python)</li>
+                        <li><i class="fas fa-database text-primary me-2"></i><strong>ML Library:</strong> Scikit-learn</li>
+                        <li><i class="fas fa-chart-bar text-primary me-2"></i><strong>Data Processing:</strong> Pandas & NumPy</li>
+                        <li><i class="fas fa-palette text-primary me-2"></i><strong>Frontend:</strong> Bootstrap 5</li>
+                        <li><i class="fas fa-save text-primary me-2"></i><strong>Model Storage:</strong> Joblib</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-list me-2"></i>Features Used for Prediction
+                    </h5>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h6>Location Features:</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-map-marker-alt text-info me-2"></i>Longitude</li>
+                                <li><i class="fas fa-map-marker-alt text-info me-2"></i>Latitude</li>
+                                <li><i class="fas fa-water text-info me-2"></i>Ocean Proximity</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h6>Property Features:</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-home text-success me-2"></i>Housing Median Age</li>
+                                <li><i class="fas fa-door-open text-success me-2"></i>Total Rooms</li>
+                                <li><i class="fas fa-bed text-success me-2"></i>Total Bedrooms</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h6>Demographic Features:</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-users text-warning me-2"></i>Population</li>
+                                <li><i class="fas fa-house-user text-warning me-2"></i>Households</li>
+                                <li><i class="fas fa-dollar-sign text-warning me-2"></i>Median Income</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-question-circle me-2"></i>How to Use
+                    </h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Single Prediction:</h6>
+                            <ol>
+                                <li>Navigate to the "Predict" page</li>
+                                <li>Fill in all required property details</li>
+                                <li>Click "Predict Price" to get instant results</li>
+                                <li>View the predicted price and confidence score</li>
+                            </ol>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Batch Prediction:</h6>
+                            <ol>
+                                <li>Prepare a CSV file with property data</li>
+                                <li>Upload the file using the "Upload" page</li>
+                                <li>Wait for processing to complete</li>
+                                <li>Download the results with predictions</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-exclamation-triangle me-2"></i>Important Notes
+                    </h5>
+                    <div class="alert alert-info">
+                        <ul class="mb-0">
+                            <li>Predictions are based on historical California housing data</li>
+                            <li>Results should be used as estimates, not exact values</li>
+                            <li>Market conditions may affect actual prices</li>
+                            <li>For CSV uploads, ensure all required columns are present</li>
+                            <li>Ocean proximity values must match the specified options</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12 text-center">
+            <a href="{{ url_for('index') }}" class="btn btn-primary">
+                <i class="fas fa-home me-2"></i>Back to Home
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %} 

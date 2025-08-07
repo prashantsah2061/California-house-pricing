@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block title %}Home - California House Pricing Predictor{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-primary mb-3">
+            <i class="fas fa-home me-3"></i>California House Pricing Predictor
+        </h1>
+        <p class="lead text-muted">Predict house prices in California using advanced machine learning algorithms</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h5 class="card-title">Single Prediction</h5>
+                    <p class="card-text">Get instant house price predictions by entering individual property details including location, size, and demographics.</p>
+                    <a href="{{ url_for('predict') }}" class="btn btn-primary">
+                        <i class="fas fa-arrow-right me-2"></i>Start Predicting
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-upload"></i>
+                    </div>
+                    <h5 class="card-title">Batch Prediction</h5>
+                    <p class="card-text">Upload a CSV file with multiple properties and get predictions for all of them at once. Download results instantly.</p>
+                    <a href="{{ url_for('upload_file') }}" class="btn btn-primary">
+                        <i class="fas fa-arrow-right me-2"></i>Upload File
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title text-center mb-4">
+                        <i class="fas fa-chart-line me-2"></i>How It Works
+                    </h4>
+                    <div class="row g-4">
+                        <div class="col-md-3 text-center">
+                            <div class="feature-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h6>Data Collection</h6>
+                            <p class="small text-muted">Trained on California housing dataset with comprehensive property features</p>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <div class="feature-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h6>ML Model</h6>
+                            <p class="small text-muted">Advanced Random Forest algorithm for accurate price predictions</p>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <div class="feature-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <h6>Processing</h6>
+                            <p class="small text-muted">Automated data preprocessing and feature engineering pipeline</p>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <h6>Results</h6>
+                            <p class="small text-muted">Instant predictions with confidence scores and detailed analysis</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title text-center mb-4">
+                        <i class="fas fa-info-circle me-2"></i>Features Used for Prediction
+                    </h4>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-map-marker-alt text-primary me-2"></i>Longitude & Latitude</li>
+                                <li><i class="fas fa-home text-primary me-2"></i>Housing Median Age</li>
+                                <li><i class="fas fa-door-open text-primary me-2"></i>Total Rooms</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-bed text-primary me-2"></i>Total Bedrooms</li>
+                                <li><i class="fas fa-users text-primary me-2"></i>Population</li>
+                                <li><i class="fas fa-house-user text-primary me-2"></i>Households</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-dollar-sign text-primary me-2"></i>Median Income</li>
+                                <li><i class="fas fa-water text-primary me-2"></i>Ocean Proximity</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

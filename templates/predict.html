@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+
+{% block title %}Predict House Price - California House Pricing Predictor{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-primary">
+            <i class="fas fa-calculator me-2"></i>Predict House Price
+        </h2>
+        <p class="text-muted">Enter property details to get an instant price prediction</p>
+    </div>
+
+    {% if prediction %}
+    <div class="prediction-result">
+        <h3 class="mb-3">
+            <i class="fas fa-dollar-sign me-2"></i>Predicted House Price
+        </h3>
+        <h2 class="display-4 fw-bold mb-2">${{ "{:,.0f}".format(prediction) }}</h2>
+        <p class="mb-0">
+            <i class="fas fa-chart-line me-2"></i>Confidence: {{ "{:.1f}%".format(confidence) }}
+        </p>
+    </div>
+    {% endif %}
+
+    <div class="card">
+        <div class="card-body">
+            <form method="POST" class="row g-3">
+                {{ form.hidden_tag() }}
+                
+                <div class="col-md-6">
+                    <label for="{{ form.longitude.id }}" class="form-label">
+                        <i class="fas fa-map-marker-alt me-2"></i>{{ form.longitude.label }}
+                    </label>
+                    {{ form.longitude(class="form-control", placeholder="e.g., -122.23") }}
+                    {% if form.longitude.errors %}
+                        <div class="text-danger small">
+                            {% for error in form.longitude.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="col-md-6">
+                    <label for="{{ form.latitude.id }}" class="form-label">
+                        <i class="fas fa-map-marker-alt me-2"></i>{{ form.latitude.label }}
+                    </label>
+                    {{ form.latitude(class="form-control", placeholder="e.g., 37.88") }}
+                    {% if form.latitude.errors %}
+                        <div class="text-danger small">
+                            {% for error in form.latitude.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="col-md-6">
+                    <label for="{{ form.housing_median_age.id }}" class="form-label">
+                        <i class="fas fa-home me-2"></i>{{ form.housing_median_age.label }}
+                    </label>
+                    {{ form.housing_median_age(class="form-control", placeholder="e.g., 41") }}
+                    {% if form.housing_median_age.errors %}
+                        <div class="text-danger small">
+                            {% for error in form.housing_median_age.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="col-md-6">
+                    <label for="{{ form.total_rooms.id }}" class="form-label">
+                        <i class="fas fa-door-open me-2"></i>{{ form.total_rooms.label }}
+                    </label>
+                    {{ form.total_rooms(class="form-control", placeholder="e.g., 880") }}
+                    {% if form.total_rooms.errors %}
+                        <div class="text-danger small">
+                            {% for error in form.total_rooms.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="col-md-6">
+                    <label for="{{ form.total_bedrooms.id }}" class="form-label">
+                        <i class="fas fa-bed me-2"></i>{{ form.total_bedrooms.label }}
+                    </label>
+                    {{ form.total_bedrooms(class="form-control", placeholder="e.g., 129") }}
+                    {% if form.total_bedrooms.errors %}
+                        <div class="text-danger small">
+                            {% for error in form.total_bedrooms.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="col-md-6">
+                    <label for="{{ form.population.id }}" class="form-label">
+                        <i class="fas fa-users me-2"></i>{{ form.population.label }}
+                    </label>
+                    {{ form.population(class="form-control", placeholder="e.g., 322") }}
+                    {% if form.population.errors %}
+                        <div class="text-danger small">
+                            {% for error in form.population.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="col-md-6">
+                    <label for="{{ form.households.id }}" class="form-label">
+                        <i class="fas fa-house-user me-2"></i>{{ form.households.label }}
+                    </label>
+                    {{ form.households(class="form-control", placeholder="e.g., 126") }}
+                    {% if form.households.errors %}
+                        <div class="text-danger small">
+                            {% for error in form.households.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="col-md-6">
+                    <label for="{{ form.median_income.id }}" class="form-label">
+                        <i class="fas fa-dollar-sign me-2"></i>{{ form.median_income.label }}
+                    </label>
+                    {{ form.median_income(class="form-control", placeholder="e.g., 8.3252") }}
+                    {% if form.median_income.errors %}
+                        <div class="text-danger small">
+                            {% for error in form.median_income.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="col-md-6">
+                    <label for="{{ form.ocean_proximity.id }}" class="form-label">
+                        <i class="fas fa-water me-2"></i>{{ form.ocean_proximity.label }}
+                    </label>
+                    {{ form.ocean_proximity(class="form-select") }}
+                    {% if form.ocean_proximity.errors %}
+                        <div class="text-danger small">
+                            {% for error in form.ocean_proximity.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="col-12 text-center mt-4">
+                    {{ form.submit(class="btn btn-primary btn-lg") }}
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-info-circle me-2"></i>Sample Data Ranges
+                    </h5>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li><strong>Longitude:</strong> -124.35 to -114.31</li>
+                                <li><strong>Latitude:</strong> 32.54 to 41.95</li>
+                                <li><strong>Housing Age:</strong> 1 to 52 years</li>
+                                <li><strong>Total Rooms:</strong> 2 to 39,320</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li><strong>Total Bedrooms:</strong> 1 to 6,435</li>
+                                <li><strong>Population:</strong> 3 to 35,682</li>
+                                <li><strong>Households:</strong> 1 to 6,082</li>
+                                <li><strong>Median Income:</strong> 0.5 to 15.0</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

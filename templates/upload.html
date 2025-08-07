@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block title %}Upload File - California House Pricing Predictor{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-primary">
+            <i class="fas fa-upload me-2"></i>Batch Prediction
+        </h2>
+        <p class="text-muted">Upload a CSV file with multiple properties to get predictions for all of them</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="mb-4">
+                            <label for="file" class="form-label">
+                                <i class="fas fa-file-csv me-2"></i>Select CSV File
+                            </label>
+                            <input type="file" class="form-control" id="file" name="file" accept=".csv" required>
+                            <div class="form-text">
+                                <i class="fas fa-info-circle me-1"></i>
+                                Maximum file size: 16MB. File must be in CSV format.
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-upload me-2"></i>Upload and Predict
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-info-circle me-2"></i>CSV File Requirements
+                    </h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Required Columns:</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>longitude</li>
+                                <li><i class="fas fa-check text-success me-2"></i>latitude</li>
+                                <li><i class="fas fa-check text-success me-2"></i>housing_median_age</li>
+                                <li><i class="fas fa-check text-success me-2"></i>total_rooms</li>
+                                <li><i class="fas fa-check text-success me-2"></i>total_bedrooms</li>
+                                <li><i class="fas fa-check text-success me-2"></i>population</li>
+                                <li><i class="fas fa-check text-success me-2"></i>households</li>
+                                <li><i class="fas fa-check text-success me-2"></i>median_income</li>
+                                <li><i class="fas fa-check text-success me-2"></i>ocean_proximity</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Ocean Proximity Values:</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-water text-primary me-2"></i>NEAR BAY</li>
+                                <li><i class="fas fa-water text-primary me-2"></i>&lt;1H OCEAN</li>
+                                <li><i class="fas fa-water text-primary me-2"></i>INLAND</li>
+                                <li><i class="fas fa-water text-primary me-2"></i>NEAR OCEAN</li>
+                                <li><i class="fas fa-water text-primary me-2"></i>ISLAND</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-download me-2"></i>Sample CSV Format
+                    </h5>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-bordered">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>longitude</th>
+                                    <th>latitude</th>
+                                    <th>housing_median_age</th>
+                                    <th>total_rooms</th>
+                                    <th>total_bedrooms</th>
+                                    <th>population</th>
+                                    <th>households</th>
+                                    <th>median_income</th>
+                                    <th>ocean_proximity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>-122.23</td>
+                                    <td>37.88</td>
+                                    <td>41</td>
+                                    <td>880</td>
+                                    <td>129</td>
+                                    <td>322</td>
+                                    <td>126</td>
+                                    <td>8.3252</td>
+                                    <td>NEAR BAY</td>
+                                </tr>
+                                <tr>
+                                    <td>-122.22</td>
+                                    <td>37.86</td>
+                                    <td>21</td>
+                                    <td>7099</td>
+                                    <td>1106</td>
+                                    <td>2401</td>
+                                    <td>1138</td>
+                                    <td>8.3014</td>
+                                    <td>NEAR BAY</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mt-3">
+                        <a href="{{ url_for('download_file', filename='sample_data.csv') }}" class="btn btn-outline-primary">
+                            <i class="fas fa-download me-2"></i>Download Sample CSV
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
