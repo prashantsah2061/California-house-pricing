@@ -18,8 +18,8 @@ __pycache__/
 # Ignore uploads directory contents
 uploads/*.csv
 
-# Ignore large dataset files
-housing.csv
+# Ignore large dataset files (keep housing.csv for deployment)
+# housing.csv
 
 # Ignore old scripts
 main_old.py
